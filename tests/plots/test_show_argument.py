@@ -38,9 +38,5 @@ def test_waterfall_no_implicit_show_by_default(explainer, monkeypatch):
         shap.plots.waterfall(explanation[0])
 
     assert called == []
-    show_warnings = [
-        w
-        for w in captured
-        if "`show` argument to `shap.plots.waterfall` is deprecated" in str(w.message)
-    ]
+    show_warnings = [w for w in captured if "`show` argument to `shap.plots.waterfall` is deprecated" in str(w.message)]
     assert show_warnings == []
