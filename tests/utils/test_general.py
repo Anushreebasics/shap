@@ -1,10 +1,11 @@
+import sys
+import types
+from typing import Any
+
 import numpy as np
 import pandas as pd
 import pytest
 import scipy.sparse as ssp
-import sys
-import types
-from typing import Any
 
 import shap
 
