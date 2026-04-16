@@ -123,7 +123,7 @@ def test_waterfall_plot_for_data_with_number_columns():
 @pytest.mark.mpl_image_compare(tolerance=3)
 def test_waterfall_accepts_ax_argument(explainer):
     explanation = explainer(explainer.data)
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(8, 6))
     returned_ax = shap.plots.waterfall(explanation[0], show=False, ax=ax)
 
     assert returned_ax is ax
