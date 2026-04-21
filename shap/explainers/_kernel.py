@@ -21,6 +21,7 @@ from tqdm.auto import tqdm
 try:
     from .._cutils import compute_exp_val
 except ModuleNotFoundError:
+
     def compute_exp_val(
         nsamples_run: int,
         nsamples_added: int,
@@ -37,6 +38,7 @@ except ModuleNotFoundError:
             ey[i, : ey.shape[1]] = ey_val[: ey.shape[1]]
             nsamples_run += 1
         return nsamples_run
+
 
 from .._explanation import Explanation
 from ..utils import safe_isinstance
