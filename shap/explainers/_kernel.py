@@ -27,9 +27,9 @@ except ModuleNotFoundError:
         nsamples_added: int,
         D: int,
         N: int,
-        weights: npt.NDArray[np.floating[Any]],
-        y: npt.NDArray[np.floating[Any]],
-        ey: npt.NDArray[np.floating[Any]],
+        weights: npt.NDArray[np.float64],
+        y: npt.NDArray[np.float64],
+        ey: npt.NDArray[np.float64],
     ) -> int:
         for i in range(nsamples_run, nsamples_added):
             ey_val = np.zeros(D)
