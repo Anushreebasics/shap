@@ -38,6 +38,7 @@ class UnsupportedModule:
     def __getattribute__(self, item: str) -> NoReturn:
         raise ImportError(_no_matplotlib_warning)
 
+
 _PLOT_EXPORTS = {
     "plots",
     "bar_plot",
@@ -85,7 +86,7 @@ def __getattr__(name: str) -> Any:
     if name in _PLOT_EXPORTS:
         try:
             import matplotlib  # noqa: F401
-        except ImportError as exc:
+        except ImportError:
             if name == "plots":
                 value = UnsupportedModule()
             else:
