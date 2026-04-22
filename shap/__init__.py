@@ -2,7 +2,7 @@ import os
 from importlib import import_module
 from typing import Any, NoReturn
 
-import lazy_loader as lazy
+import lazy_loader as lazy  # type: ignore[import-untyped]
 
 from ._explanation import Cohorts as Cohorts
 from ._explanation import Explanation as Explanation
@@ -13,7 +13,7 @@ if _eager_import_env is not None:
     # apply SHAP-specific fallbacks for optional dependencies.
     os.environ["EAGER_IMPORT"] = "0"
 
-__getattr__, __dir__, __all__ = lazy.attach_stub(__name__, __file__)
+_stub_getattr, __dir__, __all__ = lazy.attach_stub(__name__, __file__)
 
 if _eager_import_env is not None:
     os.environ["EAGER_IMPORT"] = _eager_import_env
@@ -79,11 +79,12 @@ _PLOT_ALIAS_MAP = {
     "waterfall_plot": ("shap.plots._waterfall", "waterfall"),
 }
 
-_lazy_getattr = __getattr__
+_lazy_getattr = _stub_getattr
 
 
 def __getattr__(name: str) -> Any:
     if name in _PLOT_EXPORTS:
+        value: Any
         try:
             import matplotlib  # noqa: F401
         except ImportError:
