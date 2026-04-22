@@ -1,7 +1,5 @@
 import os
 from importlib import import_module
-import os
-from importlib import import_module
 from typing import Any, NoReturn
 
 import lazy_loader as lazy  # type: ignore[import-untyped]
@@ -39,7 +37,6 @@ def unsupported(*args: Any, **kwargs: Any) -> NoReturn:
 class UnsupportedModule:
     def __getattribute__(self, item: str) -> NoReturn:
         raise ImportError(_no_matplotlib_warning)
-
 
 
 def unsupported(*args: Any, **kwargs: Any) -> NoReturn:
